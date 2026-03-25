@@ -1,2 +1,16 @@
 __pycache__/
 venv/
+.tfstate
+.tfstate.backup
+*.tfvars
+.terraform/
+.terraform.lock.hcl
+*.log
+*.tfplan
+*.zip
+*.tar.gz
+*.egg-info/
+.DS_Store
+.idea/
+.vscode/
+__pycache__/
