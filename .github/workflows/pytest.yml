@@ -58,41 +58,41 @@ jobs:
 
  
 
-  # Deploy_job:
-  #   needs: build_job
-  #   run-on: ubuntu-latest
+  Deploy_job:
+    needs: build_job
+    runs-on: ubuntu-latest
 
-  #   Steps:   
+    steps:   
 
-  #      - name: checkout repository
-  #        uses: action/checkout@v3
+      - name: checkout repository
+        uses: action/checkout@v3
 
-  #      - name: Configure AWS credentials
-  #        uses: aws-actions/configure-aws-credentials@v2
-  #        with:
-  #         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  #         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  #         aws-region: us-east-1
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+         aws-region: us-east-1
 
-  #      - name: Login to ECR
-  #        uses: aws-actions/amazon-ecr-login@v1
+      - name: Login to ECR
+        uses: aws-actions/amazon-ecr-login@v1
 
-  #      - name: Build Docker image
-  #        run: |
-  #         docker build -t django-app .
+      - name: Build Docker image
+        run: |
+          docker build -t django-app .
 
-  #      - name: Tag image
-  #        run: |
-  #         docker tag django-app:latest <ECR_URI>:latest
+      - name: Tag image
+        run: |
+          docker tag django-app:latest <ECR_URI>:latest
 
-  #      - name: Push image
-  #        run: |
-  #         docker push <ECR_URI>:latest
+      - name: Push image
+        run: |
+          docker push <ECR_URI>:latest
 
-  #      - name: Deploy to ECS
-  #        run: |
-  #         aws ecs update-service \
-  #           --cluster django-cluster \
-  #           --service django-service \
-  #           --force-new-deployment   
-         
+      - name: Deploy to ECS
+        run: |
+          aws ecs update-service \
+           --cluster django-cluster \
+           --service django-service \
+           --force-new-deployment   
+      
