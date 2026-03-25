@@ -14,3 +14,14 @@ venv/
 .idea/
 .vscode/
 __pycache__/
+terraform.tfstate
+terraform.tfstate.backup
+*.tfvars
+*.log
+*.tfplan
+*.zip
+*.tar.gz
+*.egg-info/
+.DS_Store
+.idea/
+.vscode/
