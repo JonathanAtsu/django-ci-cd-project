@@ -80,7 +80,7 @@ jobs:
         run: |
           docker build -t django-app .
 
-      - name: Tag image
+      - name: Tag image 
         run: |
           docker tag django-app:latest ${{ secrets.ECR_ACCESS_ROLE }}:latest
 
